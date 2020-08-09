@@ -20,6 +20,7 @@ Route::resource('forma_pagos', 'FormaPagoController');
 Route::resource('empleados', 'EmpleadoController');
 Route::resource('prestamos', 'PrestamoController');
 Route::resource('pagos', 'PagoController');
+Route::resource('gastos', 'GastoController');
 
 
 
@@ -31,6 +32,7 @@ Route::get('clientes/estado/{id}', 'ClienteController@change')->name('clientes.s
 Route::get('rutas/estado/{id}', 'RutaController@change')->name('rutas.status');
 Route::get('forma_pago/estado/{id}', 'FormaPagoController@change')->name('forma_pago.status');
 Route::get('empleados/estado/{id}', 'EmpleadoController@change')->name('empleados.status');
+Route::get('gastos/estado/{id}', 'GastoController@change')->name('gastos.status');
 
 Auth::routes();
 

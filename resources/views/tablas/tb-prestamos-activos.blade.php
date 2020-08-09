@@ -43,7 +43,10 @@
                         <div class="dropdown-menu">
                             <a class="dropdown-item show-details" data-toggle="modal" data-prestamo_id="{{$item->id}}"  
                                 data-target="#modalCreate"><i class="fa fa-edit"></i> Pagar</a>
-                            
+                                <a class="dropdown-item show-details" data-toggle="modal" data-prestamo_id="{{$item->id}} data-toggle="modal" data-href="{{route('pagos.show', $item->id)}}""  
+                                    data-target="#modalDetalles"><i class="fa fa-eye"></i> Ver Pagos</a>
+                                <a class="dropdown-item show-details" data-toggle="modal" data-prestamo_id="{{$item->id}} data-toggle="modal" data-href="{{route('prestamos.show', $item->id)}}""  
+                                        data-target="#modalDetalles"><i class="fa fa-calendar"></i> Calendario de Pagos</a>
                             
                         </div>
                     </div>

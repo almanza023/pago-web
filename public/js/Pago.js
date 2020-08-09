@@ -12,7 +12,32 @@ $(function() {
     });
     showCreate();
     showEdit();
+    modalShow();
 });
+
+const modalShow = () => {
+    $('#modalDetalles').on('show.bs.modal', function(event) {
+
+        let button = $(event.relatedTarget)
+        let url = button.data('href')
+
+        let modal = $(this)
+
+        $.ajax({
+            type: 'GET',
+            url: url,
+            success: function(data) {
+                modal.find('.modal-body').html(data);
+
+            }
+        });
+    });
+
+    $('#modalShow').on('hide.bs.modal', function(e) {
+        $(this).find('.modal-body').html("");
+    });
+
+}
 
 //guardar en el form
 const save = () => {

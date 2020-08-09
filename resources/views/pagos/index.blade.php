@@ -24,6 +24,7 @@
 <form id="form_hidden" style="display:none" action="{{route('pagos.index')}}" method="GET"><input type="hidden" name="opcion" value="ok"></form>
 
 @include('modals.create-pago')
+@include('modals.detalles')
 @endsection
 
 

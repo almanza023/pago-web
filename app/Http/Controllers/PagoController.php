@@ -106,7 +106,11 @@ class PagoController extends Controller
      */
     public function show($id)
     {
-        //
+        if(request()->ajax()){
+            $pagos=Pago::where('prestamo_id', $id)->get();
+            $estado=Prestamo::estado($id);
+            return response()->view('ajax.detalles-pagos', compact('pagos', 'estado'));
+        }
     }
 
     /**
