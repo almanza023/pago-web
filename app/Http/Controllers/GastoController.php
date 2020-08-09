@@ -53,9 +53,9 @@ class GastoController extends Controller
     public function store(Request $request)
     {
     
-       $empleado_id=1;
+       $usuario_id=auth()->user()->id;
        $gasto= new Gasto();
-       $gasto->empleado_id=$empleado_id;
+       $gasto->user_id=$usuario_id;
        $gasto->concepto=$request->concepto;
        $gasto->valor=$request->valor;
        $gasto->fecha=$request->fecha;

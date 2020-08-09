@@ -58,7 +58,7 @@ class PrestamoController extends Controller
     public function store(Request $request)
     {
         
-        $empleado_id=1;
+        $usuario_id=auth()->user()->id;
     
         DB::beginTransaction();
         try {
@@ -74,7 +74,7 @@ class PrestamoController extends Controller
             //Creacion de Prestamo
             $prestamo= new Prestamo();
             $prestamo->cliente_id=$cliente->id;
-            $prestamo->empleado_id=$empleado_id;
+            $prestamo->user_id=$usuario_id;
             $prestamo->forma_pago_id=$request->forma_pago_id;
             $prestamo->fecha=$request->fecha;
             $prestamo->monto=$request->monto;
@@ -101,7 +101,7 @@ class PrestamoController extends Controller
             if($request->descontar==1){               
             $pago = new Pago();
             $pago->prestamo_id=$prestamo->id;
-            $pago->empleado_id=$empleado_id;
+            $pago->user_id=$usuario_id;
             $pago->valor=$request->v_descuento;
             $pago->fecha=$request->fecha;
             $pago->adelanto=$request->descontar;
@@ -156,13 +156,7 @@ class PrestamoController extends Controller
     public function update(Request $request, $id)
     {
        
-        if (request()->ajax()) {
-            $exito=Empleado::findOrFail($request->id)->update($request->all());
-            if($exito){
-                return response()->json(['success' => 'DATOS ACTUALIZADOS CORRECTAMENTE']);
-            }
-            
-        }
+        
     }
 
     /**
@@ -188,13 +182,6 @@ class PrestamoController extends Controller
 
     public function change($id)
     {
-        $emppleado = Empleado::findOrFail($id);
-
-        if ($emppleado->estado==1) {
-            $emppleado->update(['estado' => 0]);
-        } else {
-            $emppleado->update(['estado' => 1]);
-        }
-        return response()->json(['success' => 'ESTADO  ACTUALIZADO CON EXITO!']);
+        
     }
 }

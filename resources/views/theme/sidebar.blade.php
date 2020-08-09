@@ -19,10 +19,10 @@
                     <a href="{{ route('pagos.index') }}" class="waves-effect"> <i class="fa fa-money-check"></i><span> Pagos </span></a>
                 </li>
                 <li>
-                    <a href="{{ route('empleados.index') }}" class="waves-effect"><i class="fa fa-user"></i><span> Usuarios </span></a>
+                    <a href="{{ route('usuarios.index') }}" class="waves-effect"><i class="fa fa-user"></i><span> Usuarios </span></a>
                 </li>
                 <li>
-                    <a href="{{ route('clientes.index') }}" class="waves-effect"><i class="fa fa-calculator"></i><span> Calculos </span></a>
+                    <a href="{{ route('gastos.index') }}" class="waves-effect"><i class="fa fa-calculator"></i><span> Gastos </span></a>
                 </li>
                 <li>
                     <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-black-mesa"></i> <span> Configuraciones <span class="float-right menu-arrow"><i class="mdi mdi-plus"></i></span> </span> </a>

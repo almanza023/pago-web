@@ -30,7 +30,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="page-title-box">
-                                    <h4 class="page-title" align="right" >Sistema de Gestión del PAE</h4>                             
+                                    <h4 class="page-title" align="right" >Sistema de Pagos Web</h4>                             
                                 </div>
                             </div>
                         </div>

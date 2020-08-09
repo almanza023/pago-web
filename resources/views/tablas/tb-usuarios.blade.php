@@ -22,9 +22,9 @@
                 <td>{{ $item->telefono }}</td>
                 <td>
                     @if($item->estado==1)
-                    <button class="btn badge bg-primary sm" style="color: #fff" onclick="changeEstado('{{ route('empleados.status', $item->id) }}'); "><i class="fa fa-check"></i> Activo</button>
+                    <button class="btn badge bg-primary sm" style="color: #fff" onclick="changeEstado('{{ route('usuarios.status', $item->id) }}'); "><i class="fa fa-check"></i> Activo</button>
                     @else
-                    <button class="btn badge bg-danger sm" style="color: #fff" onclick="changeEstado('{{ route('empleados.status', $item->id) }}'); "><i class="fa fa-ban"></i> Inactivo</button>
+                    <button class="btn badge bg-danger sm" style="color: #fff" onclick="changeEstado('{{ route('usuarios.status', $item->id) }}'); "><i class="fa fa-ban"></i> Inactivo</button>
                     @endif
                 </td>
                 <td>

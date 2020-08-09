@@ -9,10 +9,7 @@
                 
                  
             </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary waves-effect waves-light">
-                    Guardar
-                </button>
+            <div class="modal-footer">             
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
             </form> 
             </div>

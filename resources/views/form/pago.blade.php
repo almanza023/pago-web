@@ -1,6 +1,12 @@
 @if($crear)
 
 <input type="hidden" id="prestamo_id" name="prestamo_id">
+<div class="form-group">
+    <label>Saldo restante</label>
+    <input type="text" readonly id="restante" class="form-control">
+  
+
+</div> 
 
 <div class="form-group">
     <label>Fecha (*)</label>

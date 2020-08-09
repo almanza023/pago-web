@@ -3,38 +3,41 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
-    use AuthenticatesUsers;
-
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = RouteServiceProvider::HOME;
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
+    public function showLoginForm(){
+        return view('auth.login');
     }
+
+    public function login(Request $request){
+        
+        $this->validateLogin($request);      
+ 
+         if (Auth::attempt(['identificacion' => $request->usuario, 'password' => $request->password, 'estado'=>'1'])){           
+           $nom=auth()->user()->nombres.' '.auth()->user()->apellidos;
+             return response()->json(['success'=> $nom ]);
+         }
+         return response()->json(['warning'=>'Error al iniciar sesión. Intente Nuevamente']);
+
+
+         
+     }
+
+     protected function validateLogin(Request $request){
+        $this->validate($request,[
+            'usuario' => 'required|integer|min:6',
+            'password' => 'required|string'
+        ]);
+
+    }
+
+    public function logout(Request $request){
+        Auth::logout();
+        $request->session()->invalidate();
+        return redirect('/');
+    }
+
 }

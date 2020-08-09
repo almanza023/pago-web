@@ -9,7 +9,7 @@ class Pago extends Model
     protected $table = 'pagos';
 
     protected $fillable = [
-        'prestamo_id', 'empleado_id', 'fecha', 'valor', 'adelantado',
+        'prestamo_id', 'user_id', 'fecha', 'valor', 'adelantado',
          'estado'
     ];
 }

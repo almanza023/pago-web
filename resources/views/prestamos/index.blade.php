@@ -13,14 +13,7 @@
                 <a href="{{ route('prestamos.create') }}" class="btn btn-outline-primary waves-effect waves-light">
                     <i class="fa fa-plus-circle"></i> Crear Nuevo</a>
                 
-                <button type="button" class="btn btn-outline-info waves-effect waves-light" 
-                data-toggle="modal" data-target="#modalCreate">
-                   <i class="fa fa-plus-circle"></i> Agregar
-                </button>
-
-                <a href="{{ route('empleados.create') }}" class="btn btn-outline-danger waves-effect waves-light">
-                    <i class="fa fa-search-plus"></i> Filtrar</a>
-                </p>
+               
 
                 <div id="id_table">
                     @include('tablas.tb-prestamos')

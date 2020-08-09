@@ -9,7 +9,7 @@ class Gasto extends Model
     protected $table = 'gastos';
 
     protected $fillable = [
-        'empleado_id', 'concepto', 'fecha', 'valor', 'ruta', 
+        'user_id', 'concepto', 'fecha', 'valor', 'ruta', 
          'estado'
     ];
 }

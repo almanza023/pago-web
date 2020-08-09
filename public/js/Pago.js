@@ -106,10 +106,12 @@ const showCreate = () => {
     $('#modalCreate').on('show.bs.modal', function(event) {
         let button = $(event.relatedTarget)
         let prestamo_id = button.data('prestamo_id');
+        let restante = button.data('restante');
 
         let modal = $(this);
 
         modal.find('.modal-body #prestamo_id').val(prestamo_id);
+        modal.find('.modal-body #restante').val(restante);
 
 
     });

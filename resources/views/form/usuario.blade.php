@@ -25,6 +25,11 @@
     <input type="number" name="telefono" id="telefono" class="form-control" required />
 </div>
 
+<div class="form-group">
+    <label>Contraseña</label>
+    <input type="password" name="password" id="password" min="5"  class="form-control" required />
+</div>
+
 @endif
 
 @if($editar)

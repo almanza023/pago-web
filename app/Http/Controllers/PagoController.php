@@ -52,20 +52,30 @@ class PagoController extends Controller
      */
     public function store(Request $request)
     {
-        $empleado_id=1;
+        $usuario_id=auth()->user()->id;
         $estado=Prestamo::estado($request->prestamo_id);
         if($request->liquidar==0){
-            if($request->valor<=$estado[0]->restante){
+            if($request->valor<=$estado[0]->restante || empty($estado[0]->restante)){
                 $pago = new Pago();
                 $pago->prestamo_id=$request->prestamo_id;
-                $pago->empleado_id=$empleado_id;
+                $pago->user_id=$usuario_id;
                 $pago->valor=$request->valor;
                 $pago->fecha=$request->fecha;
                 $pago->adelanto=2;
                 $pago->save();
+
+               
+                 $saldo=Prestamo::estado($request->prestamo_id);
+
+                if($saldo[0]->abonos === $saldo[0]->total){
+                    Prestamo::find($request->prestamo_id)->update(['estado'=>'2']);
+                    return response()->json(['success' => 'LIQUIDACION DE PRESTAMO EXITO!']);
+                }
+
                 return response()->json(['success' => 'DATOS REGISTRADOS CON EXITO!']);
+               
             }else{
-                return response()->json(['warning' => 'EL VALOR  INGRESADO SUPERA AL SALDO RESTANTE']);
+                return response()->json(['warning' => 'EL VALOR  INGRESADO SUPERA AL SALDO RESTANTE ']);
             }
         }else {
             if($request->valor==$estado[0]->restante){
@@ -74,7 +84,7 @@ class PagoController extends Controller
         try {
                 $pago = new Pago();
                 $pago->prestamo_id=$request->prestamo_id;
-                $pago->empleado_id=$empleado_id;
+                $pago->user_id=$usuario_id;
                 $pago->valor=$request->valor;
                 $pago->fecha=$request->fecha;
                 $pago->adelanto=3;

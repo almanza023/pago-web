@@ -6,10 +6,10 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><img src="{{ asset('theme/agroxa/assets/images/cerar2.png')}}" /></button>
             </div>
             <div class="modal-body">
-                <form id="form_edit" action="{{ route('empleados.update', 'empleado') }}" method="POST">
+                <form id="form_edit" action="{{ route('usuarios.update', 'user') }}" method="POST">
                     @csrf
                     @method('PATCH')
-                    @include('form.cliente', ['crear'=>false, 'editar'=>true])                    
+                    @include('form.usuario', ['crear'=>false, 'editar'=>true])                    
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-outline-info waves-effect waves-light">

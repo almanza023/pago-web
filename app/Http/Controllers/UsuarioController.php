@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Empleado;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
-class EmpleadoController extends Controller
+class UsuarioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,20 +17,20 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        $empleados=Empleado::all();       
+        $empleados=User::all();       
         
 
         if (request()->ajax()) {
-            $empleados=Empleado::all();
+            $empleados=User::all();
 
             /*si los campos estan vacios mostrar mj de error, sino retornar vista. */
             if (count($empleados) == 0) {
                 return response()->json(['warning' => 'Error en el servidor']);
             } else {
-                return response()->view('tablas.tb-empleados', compact('empleados'));
+                return response()->view('tablas.tb-usuarios', compact('empleados'));
             }
         }
-        return view('empleados.index', compact('empleados'));
+        return view('usuarios.index', compact('empleados'));
     }
 
     /**
@@ -50,8 +52,16 @@ class EmpleadoController extends Controller
     public function store(Request $request)
     {
     
-       $exito= Empleado::create($request->all());
-        if($exito){
+       $user= new User();
+       $user->nombres=$request->nombres;
+       $user->apellidos=$request->apellidos;
+       $user->identificacion=$request->identificacion;
+       $user->direccion=$request->direccion;
+       $user->telefono=$request->telefono;
+       $user->email=$request->email;
+       $user->password=Hash::make($request->password);
+       $user->save();
+        if($user){
             return response()->json(['success' => 'DATOS REGISTRADOS CON EXITO!']);
         }
     }
@@ -89,7 +99,7 @@ class EmpleadoController extends Controller
     {
        
         if (request()->ajax()) {
-            $exito=Empleado::findOrFail($request->id)->update($request->all());
+            $exito=User::findOrFail($request->id)->update($request->all());
             if($exito){
                 return response()->json(['success' => 'DATOS ACTUALIZADOS CORRECTAMENTE']);
             }
@@ -110,7 +120,7 @@ class EmpleadoController extends Controller
 
     public function change($id)
     {
-        $emppleado = Empleado::findOrFail($id);
+        $emppleado = User::findOrFail($id);
 
         if ($emppleado->estado==1) {
             $emppleado->update(['estado' => 0]);

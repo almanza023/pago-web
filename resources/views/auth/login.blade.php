@@ -14,6 +14,8 @@
         <link href="{{ asset('theme/agroxa/assets/css/metismenu.min.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('theme/agroxa/assets/css/icons.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('theme/agroxa/assets/css/style.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('theme/agroxa/plugins/sweet-alert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css">
+
     </head>
 
     <body>
@@ -33,13 +35,13 @@
                     <div class="p-3">
                         <p class="text-muted text-center">Ingrese sus datos para iniciar sesión.</p>
 
-                        <form class="form-horizontal m-t-30" action="{{ route('login')}}" method="POST">
+                        <form id="formlogin" class="form-horizontal m-t-30" action="{{ route('login')}}" method="POST">
                             @csrf
                             <div class="form-group">
                                 <label for="username"><i class="fa fa-user" style="color:#35a989"></i> Usuario</label>
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="usuario" type="number" class="form-control @error('usuario') is-invalid @enderror" name="usuario" value="{{ old('usuario') }}" required  autofocus>
 
-                                @error('email')
+                                @error('usuario')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -94,7 +96,7 @@
 
             <div class="m-t-40 text-center">
                
-                <p style="color: #fff">© Sistema PAE desarrollado por ParqueSoft Sucre</p>
+                <p style="color: #fff">© Sistema de Pagos Web</p>
             </div>
 
         </div>
@@ -103,16 +105,19 @@
             
 
         <!-- jQuery  -->
-        <script src="{{ asset('theme/agroxaassets/js/jquery.min.js') }}"></script>
-        <script src="{{ asset('theme/agroxaassets/js/bootstrap.bundle.min.js') }}"></script>
-        <script src="{{ asset('theme/agroxaassets/js/metisMenu.min.js') }}"></script>
-        <script src="{{ asset('theme/agroxaassets/js/jquery.slimscroll.js') }}"></script>
-        <script src="{{ asset('theme/agroxaassets/js/waves.min.js') }}"></script>
+        <script src="{{ asset('theme/agroxa/assets/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('theme/agroxa/assets/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('theme/agroxa/assets/js/metisMenu.min.js') }}"></script>
+        <script src="{{ asset('theme/agroxa/assets/js/jquery.slimscroll.js') }}"></script>
+        <script src="{{ asset('theme/agroxa/assets/js/waves.min.js') }}"></script>
 
         <script src="{{ asset('theme/agroxa/plugins/jquery-sparkline/jquery.sparkline.min.js') }}"></script>
 
         <!-- App js -->
+        <script src="{{ asset('theme/agroxa/plugins/sweet-alert2/sweetalert2.min.js') }}"></script>
+
         <script src="{{ asset('theme/agroxa/assets/js/app.js') }}"></script>
+        <script src="{{ asset('/js/Login.js') }}"></script>
 
     </body>
 </html>

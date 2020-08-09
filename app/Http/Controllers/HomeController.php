@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cliente;
+use App\Models\Cuota;
 use App\Models\Institucion;
 use App\Models\Menu;
+use App\Models\Pago;
+use App\Models\Prestamo;
 use App\Models\Producto;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -27,11 +32,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $productos=Producto::where('estado', '1')->count();
-        $menus=Menu::where('estado', '1')->count();
-        $instituciones=Institucion::where('estado', '1')->count();
+        $date = Carbon::now();
+        $date = $date->format('Y-m-d');
+        $clientes=Cliente::where('estado', '1')->count();
+        $prestamos=Prestamo::where('estado', '1')->count();       
         $usuarios=User::count();
-        return view('home', compact('productos', 'instituciones', 'menus', 'usuarios'));
+        $pagosDia=Pago::where('fecha', $date)->sum('valor');
+        $meta=Cuota::where('fecha', $date)->sum('valor');
+        return view('home', compact('clientes', 'prestamos', 'usuarios', 'usuarios', 'pagosDia', 'meta'));
         
     }
 }
