@@ -10,6 +10,7 @@ $(function() {
         event.preventDefault();
         update();
     });
+    showCreate();
     showEdit();
 });
 
@@ -75,6 +76,19 @@ const update = () => {
 
 }
 
+
+const showCreate = () => {
+    $('#modalCreate').on('show.bs.modal', function(event) {
+        let button = $(event.relatedTarget)
+        let prestamo_id = button.data('prestamo_id');
+
+        let modal = $(this);
+
+        modal.find('.modal-body #prestamo_id').val(prestamo_id);
+
+
+    });
+}
 
 const showEdit = () => {
     $('#modalEdit').on('show.bs.modal', function(event) {

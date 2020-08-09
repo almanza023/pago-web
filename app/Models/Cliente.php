@@ -13,6 +13,11 @@ class Cliente extends Model
          'estado'
     ];
 
+
+    public function prestamos()
+    {
+        return $this->hasMany('App\Models\Prestamo');
+    }
     
 
    

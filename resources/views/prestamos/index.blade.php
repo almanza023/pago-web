@@ -1,4 +1,4 @@
-@extends('theme.main', ['tabla'=>false])
+@extends('theme.main', ['tabla'=>true])
 @section('titulo')
     Prestamos
 @endsection
@@ -22,6 +22,10 @@
                     <i class="fa fa-search-plus"></i> Filtrar</a>
                 </p>
 
+                <div id="id_table">
+                    @include('tablas.tb-prestamos')
+                   </div>
+
                
             </div>
         </div>
@@ -29,14 +33,13 @@
     <!-- end col -->
     
 </div>
-
+<form id="form_hidden" style="display:none" action="{{route('clientes.index')}}" method="GET"><input type="hidden" name="opcion" value="ok"></form>
+@include('modals.detalles')
 
 @endsection
 
 
 @section('scripts')
-<script>
-    
-</script>
+<script src="{{ asset('js/Prestamo_Index.js') }}"></script>
 
 @endsection

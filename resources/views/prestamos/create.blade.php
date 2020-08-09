@@ -12,8 +12,11 @@
                 
             <form action="{{ route('prestamos.store') }}" method="POST" id="form_create">
                 @csrf
-                @include('form.cliente', ['crear'=>true, 'editar'=>false])              
-            </div>
+                
+                
+                    @include('form.cliente', ['crear'=>true, 'editar'=>false])
+                
+            </div>   
         </div>
     </div>
     <!-- end col -->
@@ -221,5 +224,5 @@
     
 </script>
 <script src="{{ asset('js/Operaciones.js') }}"></script>
-<script src="{{ asset('js/Registro.js') }}"></script>
+<script src="{{ asset('js/Prestamo.js') }}"></script>
 @endsection

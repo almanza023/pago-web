@@ -19,6 +19,7 @@ Route::resource('rutas', 'RutaController');
 Route::resource('forma_pagos', 'FormaPagoController');
 Route::resource('empleados', 'EmpleadoController');
 Route::resource('prestamos', 'PrestamoController');
+Route::resource('pagos', 'PagoController');
 
 
 

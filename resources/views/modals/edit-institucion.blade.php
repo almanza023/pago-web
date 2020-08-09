@@ -6,7 +6,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><img src="{{ asset('theme/agroxa/assets/images/cerar2.png')}}" /></button>
             </div>
             <div class="modal-body">
-                <form id="form_edit" action="{{ route('instituciones.update', 'institucion') }}" method="POST">
+                <form id="form_delete" action="{{ route('instituciones.update', 'institucion') }}" method="POST">
                     @csrf
                     @method('PATCH')
                     @include('form.institucion', ['crear'=>false, 'editar'=>true])                    

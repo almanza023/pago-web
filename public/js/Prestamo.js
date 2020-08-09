@@ -1,4 +1,5 @@
 $(function() {
+    $('#nuevo_cliente').hide();
 
     $('form').parsley();
     $("#form_create").submit(function(event) {
@@ -11,23 +12,22 @@ $(function() {
         update();
     });
 
+    $("#crear").change(function(event) {
+        if (event.target.value == 0) {
+            $('#nuevo_cliente').remove();
+            $('#viejos').show();
+        } else {
+            $('#nuevo_cliente').show();
+            $('#viejos').hide();
+        }
+    })
 
 
 
-    $('#btnfijo').click(function() {
-        $('#tblvariable').hide();
-        $('#tblfijo').show();
-        band1 = true;
-        band2 = false;
 
-    });
 
-    $('#btnvariable').click(function() {
-        $('#tblvariable').show();
-        $('#tblfijo').hide();
-        band2 = true;
-        band1 = false;
-    });
+
+
 });
 
 //guardar en el form
