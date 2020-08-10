@@ -6,10 +6,10 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><img src="{{ asset('theme/agroxa/assets/images/cerar2.png')}}" /></button>
             </div>
             <div class="modal-body">
-                <form id="form_edit" action="{{ route('unidades.update', 'unidad') }}" method="POST">
+                <form id="form_edit" action="{{ route('liquidacion-dia.updateBase') }}" method="POST">
                     @csrf
                     @method('PATCH')
-                    @include('form.unidad', ['crear'=>false, 'editar'=>true])                    
+                    @include('form.dia', ['crear'=>false, 'editar'=>true])                    
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-outline-info waves-effect waves-light">

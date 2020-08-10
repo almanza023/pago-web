@@ -98,6 +98,43 @@
             </div>
         </div>
     </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-primary mini-stat position-relative">
+            <div class="card-body">
+                <div class="mini-stat-desc">
+                    <div class="text-white">
+                        <h6 class="text-uppercase mt-0 text-white-50"><i class="fa fa-clipboard"></i> Gastos del Día</h6>
+                        <h3 class="mb-3 mt-0">$ {{ number_format($gastosDia, 0) }}</h3>
+                        <div class="">
+                            <span class="badge badge-light text-primary">  </span> <span class="ml-2"></span>
+                        </div>
+                    </div>
+                    <div class="mini-stat-icon">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-primary mini-stat position-relative">
+            <div class="card-body">
+                <div class="mini-stat-desc">
+                    <div class="text-white">
+                        <h6 class="text-uppercase mt-0 text-white-50"><i class="fa fa-clipboard"></i> Préstamos del Día</h6>
+                        <h3 class="mb-3 mt-0">$ {{ number_format($prestamosDia, 0) }}</h3>
+                        <div class="">
+                            <span class="badge badge-light text-primary">  </span> <span class="ml-2"></span>
+                        </div>
+                    </div>
+                    <div class="mini-stat-icon">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 @endsection

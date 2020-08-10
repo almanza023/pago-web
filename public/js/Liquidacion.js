@@ -11,10 +11,8 @@ $(function() {
         update();
     });
     showEdit();
+    modalShow();
 });
-
-
-
 
 //guardar en el form
 const save = () => {
@@ -31,6 +29,8 @@ const save = () => {
                 success(data.success);
                 $('#form_create')[0].reset();
                 updateTable();
+                $("#modalCreate").modal('hide'); //ocultamos el modal
+
             } else {
                 warning(data.warning);
 
@@ -62,6 +62,7 @@ const update = () => {
                 success(data.success);
                 $('#modalEdit').modal('hide');
                 updateTable();
+                $("#modalEdit").modal('hide'); //ocultamos el modal
             } else {
                 warning(data.warning);
             }
@@ -83,26 +84,41 @@ const showEdit = () => {
     $('#modalEdit').on('show.bs.modal', function(event) {
         let button = $(event.relatedTarget)
         let id = button.data('id');
-        let nombre = button.data('nombre');
-        let nit = button.data('nit');
-        let contacto = button.data('contacto');
-        let correo = button.data('correo');
-        let direccion = button.data('direccion');
-        let telefono = button.data('telefono');
-        let municipio_id = button.data('municipio_id');
+        let base = button.data('base');
+        let user = button.data('user');
+
         let modal = $(this);
 
         modal.find('.modal-body #id').val(id);
-        modal.find('.modal-body #nombre_e').val(nombre);
-        modal.find('.modal-body #nit_e').val(nit);
-        modal.find('.modal-body #contacto_e').val(contacto);
-        modal.find('.modal-body #correo_e').val(correo);
-        modal.find('.modal-body #telefono_e').val(telefono);
-        modal.find('.modal-body #direccion_e').val(direccion);
-
-        $("#municipio_id_e option[value='" + municipio_id + "']").attr("selected", true);
+        modal.find('.modal-body #base_e').val(base);
+        $("#user_id_e option[value='" + user + "']").attr("selected", true);
 
     });
+}
+
+//Modal dinamica
+const modalShow = () => {
+    $('#modalDetalles').on('show.bs.modal', function(event) {
+
+        let button = $(event.relatedTarget)
+        let url = button.data('href')
+
+        let modal = $(this)
+
+        $.ajax({
+            type: 'GET',
+            url: url,
+            success: function(data) {
+                modal.find('.modal-body').html(data);
+
+            }
+        });
+    });
+
+    $('#modalShow').on('hide.bs.modal', function(e) {
+        $(this).find('.modal-body').html("");
+    });
+
 }
 
 //FUNCION DE ESTADOS

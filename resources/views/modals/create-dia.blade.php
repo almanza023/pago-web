@@ -6,9 +6,9 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><img src="{{ asset('theme/agroxa/assets/images/cerrar1.png')}}" /></button>
             </div>
             <div class="modal-body">
-                <form id="form_create" action="{{ route('productos.store') }}" method="POST">
+                <form id="form_create" action="{{ route('liquidacion-dias.store') }}" method="POST">
                     @csrf
-                   @include('form.producto', ['crear'=>true, 'editar'=>false])   
+                   @include('form.dia', ['crear'=>true, 'editar'=>false])   
                  
             </div>
             <div class="modal-footer">

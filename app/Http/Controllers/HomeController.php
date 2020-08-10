@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cliente;
 use App\Models\Cuota;
+use App\Models\Gasto;
 use App\Models\Institucion;
 use App\Models\Menu;
 use App\Models\Pago;
@@ -38,8 +39,11 @@ class HomeController extends Controller
         $prestamos=Prestamo::where('estado', '1')->count();       
         $usuarios=User::count();
         $pagosDia=Pago::where('fecha', $date)->sum('valor');
+        $gastosDia=Gasto::where('fecha', $date)->sum('valor');
         $meta=Cuota::where('fecha', $date)->sum('valor');
-        return view('home', compact('clientes', 'prestamos', 'usuarios', 'usuarios', 'pagosDia', 'meta'));
+        $prestamosDia=Prestamo::where('fecha', $date)->sum('monto');
+        return view('home', compact('clientes', 'prestamos', 'usuarios', 'usuarios', 'pagosDia', 'meta',
+        'gastosDia', 'prestamosDia'));
         
     }
 }

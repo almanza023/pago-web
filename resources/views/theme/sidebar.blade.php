@@ -25,6 +25,15 @@
                     <a href="{{ route('gastos.index') }}" class="waves-effect"><i class="fa fa-calculator"></i><span> Gastos </span></a>
                 </li>
                 <li>
+                    <a href="{{ route('liquidacion-dias.index') }}" class="waves-effect"><i class="fa fa-calendar"></i><span> Control de Caja </span></a>
+
+                    
+                </li>
+                <li>                   
+
+                    <a href="{{ route('liquidacion-dias.index') }}" class="waves-effect"><i class="fa fa-paper-plane"></i><span> Reportes </span></a>
+                </li>
+                <li>
                     <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-black-mesa"></i> <span> Configuraciones <span class="float-right menu-arrow"><i class="mdi mdi-plus"></i></span> </span> </a>
                     <ul class="submenu">
                         <li><a href="{{ route('forma_pagos.index') }}"><i class="fa fa-percent"></i><span>  Formas de Pagos </span></a></li>

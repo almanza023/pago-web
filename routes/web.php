@@ -21,6 +21,13 @@ Route::resource('usuarios', 'UsuarioController');
 Route::resource('prestamos', 'PrestamoController');
 Route::resource('pagos', 'PagoController');
 Route::resource('gastos', 'GastoController');
+Route::resource('liquidacion-dias', 'LiquidacionDiaController');
+
+//ACTUALIZAR
+
+Route::put('liquidacion-dias/base', 'LiquidacionDiaController@updateBase')->name('liquidacion-dia.updateBase');
+
+//get
 
 
 
